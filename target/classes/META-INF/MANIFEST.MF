@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: cursomc
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: u0146439
+Built-By: U0146439
 Implementation-Vendor-Id: com.cursomc
 Build-Jdk: 1.8.0_161
 Implementation-URL: http://maven.apache.org
