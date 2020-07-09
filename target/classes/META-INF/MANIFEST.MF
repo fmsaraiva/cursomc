@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: cursomc
-Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: U0146439
-Implementation-Vendor-Id: com.cursomc
-Build-Jdk: 1.8.0_161
-Implementation-URL: http://projects.spring.io/spring-boot/cursomc/
+Built-By: fmsar
+Build-Jdk: 1.8.0_251
 Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
 
