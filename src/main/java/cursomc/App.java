@@ -11,7 +11,7 @@ public class App implements CommandLineRunner{
 		SpringApplication.run(App.class, args);
 	}
 
-	//Método usuado para instanciar classes quando a aplicação inicializa (CommandLineRunner)
+	//Metodo usuado para instanciar classes quando a aplicacao inicializa (CommandLineRunner)
 	public void run(String... args) throws Exception {						
 	}
 
