@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import cursomc.services.DBService;
+import cursomc.services.EmailService;
+import cursomc.services.MockEmailService;
 
 @Configuration
 @Profile("dev")
@@ -30,5 +32,10 @@ public class DevConfig {
 		dbService.instantiateTestDatabase();
 		
 		return true;
+	}
+	
+	@Bean
+	public EmailService emailService() {
+		return new MockEmailService();
 	}
 }
