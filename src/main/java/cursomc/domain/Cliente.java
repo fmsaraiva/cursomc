@@ -28,7 +28,7 @@ public class Cliente implements Serializable{
 	
 	@Id
 //	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "SEQ_CLIENTE")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private Integer id;
 	private String nome;
 	
