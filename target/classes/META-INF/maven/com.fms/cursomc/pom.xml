@@ -12,6 +12,8 @@
 	<description>Estudo de caso Java para curso de Modelagem conceitual UML</description>
 
 	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	    <maven.compiler.source>1.8</maven.compiler.source>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
