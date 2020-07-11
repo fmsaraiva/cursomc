@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import cursomc.domain.Categoria;
@@ -50,14 +51,16 @@ public class DBService {
 	private PagamentoRepository pagamentoRepository;	
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
+	@Autowired
+	private BCryptPasswordEncoder pe;
 
 	public void instantiateTestDatabase() throws ParseException {
-		Categoria cat1 = new Categoria (null, "Informática");
-		Categoria cat2 = new Categoria (null, "Escritório");
+		Categoria cat1 = new Categoria (null, "Informï¿½tica");
+		Categoria cat2 = new Categoria (null, "Escritï¿½rio");
 		Categoria cat3 = new Categoria (null, "Cama, mesa e banho");
-		Categoria cat4 = new Categoria (null, "Eletrônicos");
+		Categoria cat4 = new Categoria (null, "Eletrï¿½nicos");
 		Categoria cat5 = new Categoria (null, "Jardinagem");
-		Categoria cat6 = new Categoria (null, "Decoração");
+		Categoria cat6 = new Categoria (null, "Decoraï¿½ï¿½o");
 		Categoria cat7 = new Categoria (null, "Perfumaria");
 		
 		//categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
@@ -66,11 +69,11 @@ public class DBService {
 		Produto p1 = new Produto(null, "Computador", 2000.00);
 		Produto p2 = new Produto(null, "Impressora", 800.00);
 		Produto p3 = new Produto(null, "Mouse", 80.00);
-		Produto p4 = new Produto(null, "Mesa de escritório", 300.00);
+		Produto p4 = new Produto(null, "Mesa de escritï¿½rio", 300.00);
 		Produto p5 = new Produto(null, "Toalha", 50.00);
 		Produto p6 = new Produto(null, "Colcha", 200.00);
 		Produto p7 = new Produto(null, "TV true color", 1200.00);
-		Produto p8 = new Produto(null, "Roçadeira", 800.00);
+		Produto p8 = new Produto(null, "Roï¿½adeira", 800.00);
 		Produto p9 = new Produto(null, "Abajour", 100.00);
 		Produto p10 = new Produto(null, "Pendente", 180.00);
 		Produto p11 = new Produto(null, "Shampoo", 90.00);
@@ -99,10 +102,10 @@ public class DBService {
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11));
 		
 		Estado est1 = new Estado(null, "Minas Gerais");
-		Estado est2 = new Estado(null, "São Paulo");
+		Estado est2 = new Estado(null, "Sï¿½o Paulo");
 		
-		Cidade c1 = new Cidade(null, "Uberlândia", est1);
-		Cidade c2 = new Cidade(null, "São Paulo", est2);
+		Cidade c1 = new Cidade(null, "Uberlï¿½ndia", est1);
+		Cidade c2 = new Cidade(null, "Sï¿½o Paulo", est2);
 		Cidade c3 = new Cidade(null, "Campinas", est2);
 		
 		est1.getCidades().addAll(Arrays.asList(c1));
@@ -112,7 +115,7 @@ public class DBService {
 		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
 		
 //// =========================================================================================
-		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "12345678901", TipoCliente.PESSOAFISICA);
+		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "12345678901", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli1.getTelefones().addAll(Arrays.asList("27363323","93838393"));
 //		
 //		Optional<Cidade>oC1 = cidadeRepository.findById(1);

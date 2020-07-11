@@ -13,33 +13,36 @@ import cursomc.services.validation.ClienteInsert;
 public class ClienteNewDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	@NotEmpty(message="Preenchimento obrigat髍io")
+	@NotEmpty(message="Preenchimento obrigat贸rio")
 	@Length(min=5, max = 120, message = "O tamanho deve ser entre 5 e 120 caracteres")
 	private String nome;
 	
-	@NotEmpty(message="Preenchimento obrigat髍io")
-	@Email(message="Email inv醠ido")
+	@NotEmpty(message="Preenchimento obrigat贸rio")
+	@Email(message="Email inv贸lido")
 	private String email;
 	
-	@NotEmpty(message="Preenchimento obrigat髍io")
+	@NotEmpty(message="Preenchimento obrigat贸rio")
 	private String cpfCnpj;
 	
 	private Integer tipo;
 	
-	@NotEmpty(message="Preenchimento obrigat髍io")
+	@NotEmpty(message="Preenchimento obrigat贸rio")
+	private String senha;
+	
+	@NotEmpty(message="Preenchimento obrigat贸rio")
 	private String logradouro;
 	
-	@NotEmpty(message="Preenchimento obrigat髍io")
+	@NotEmpty(message="Preenchimento obrigat贸rio")
 	private String numero;
 	
 	private String complemento;
 	
 	private String bairro;
 	
-	@NotEmpty(message="Preenchimento obrigat髍io")
+	@NotEmpty(message="Preenchimento obrigat贸rio")
 	private String cep;
 	
-	@NotEmpty(message="Preenchimento obrigat髍io")
+	@NotEmpty(message="Preenchimento obrigat贸rio")
 	private String telefone1;
 	
 	private String telefone2;
@@ -79,6 +82,14 @@ public class ClienteNewDTO implements Serializable{
 
 	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getLogradouro() {

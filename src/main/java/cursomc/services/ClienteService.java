@@ -10,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import cursomc.domain.Cidade;
@@ -18,7 +19,6 @@ import cursomc.domain.Endereco;
 import cursomc.domain.enums.TipoCliente;
 import cursomc.dto.ClienteDTO;
 import cursomc.dto.ClienteNewDTO;
-import cursomc.repositories.CidadeRepository;
 import cursomc.repositories.ClienteRepository;
 import cursomc.repositories.EnderecoRepository;
 import cursomc.services.exceptions.DataIntegrityException;
@@ -29,12 +29,12 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository repo;
-	
-	@Autowired
-	private CidadeRepository cidadeRepository;
-	
+		
 	@Autowired
 	private EnderecoRepository enderecoRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder pe;
 	
 	public Cliente find(Integer id) {
 		
@@ -42,7 +42,7 @@ public class ClienteService {
 		
 //		return obj.orElse(null);
 		
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto n„o encontrado! Id: " + id));
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto n√£o encontrado! Id: " + id));
 	}
 	
 	@Transactional
@@ -65,7 +65,7 @@ public class ClienteService {
 		try {
 			repo.deleteById(id);
 		}catch(DataIntegrityViolationException e) {
-			throw new DataIntegrityException("N„o È possivel excluir um cliente que possui pedidos associados.");
+			throw new DataIntegrityException("N√£o √© possivel excluir um cliente que possui pedidos associados.");
 		}
 	}
 	
@@ -80,11 +80,11 @@ public class ClienteService {
 	}
 	
 	public Cliente fromDTO(ClienteDTO objDto) {
-		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null);
+		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null, null);
 	}
 	
 	public Cliente fromDTO(ClienteNewDTO objDto) {
-		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfCnpj(), TipoCliente.toEnum(objDto.getTipo()));
+		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfCnpj(), TipoCliente.toEnum(objDto.getTipo()), pe.encode(objDto.getSenha()) );
 		
 //		Optional<Cidade> oCid = cidadeRepository.findById(objDto.getCidadeId());
 //		Cidade cid = oCid.get();
